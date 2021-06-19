@@ -16,7 +16,7 @@ services:
       replicas: 2
     entrypoint: ruby
     image: index.docker.io/academiaonline/simplilearn-dockercoins-2021-06:1.0-hasher
-    network:
+    networks:
       - hasher-network
     working_dir: /src
   redis:
@@ -29,7 +29,7 @@ services:
       replicas: 1
     entrypoint: docker-entrypoint.sh
     image: redis:alpine
-    network:
+    networks:
       - redis-network
     volumes:
       - redis-volume:/data
@@ -44,7 +44,7 @@ services:
       replicas: 2
     entrypoint: python
     image: index.docker.io/academiaonline/simplilearn-dockercoins-2021-06:1.0-rng
-    network:
+    networks:
       - rng-network
     working_dir: /src
   webui:
@@ -57,7 +57,7 @@ services:
       replicas: 2
     entrypoint: node
     image: index.docker.io/academiaonline/simplilearn-dockercoins-2021-06:1.0-webui
-    network:
+    networks:
       - redis-network
     working_dir: /src
   worker:
@@ -70,7 +70,7 @@ services:
       replicas: 2
     entrypoint: python
     image: index.docker.io/academiaonline/simplilearn-dockercoins-2021-06:1.0-worker
-    network:
+    networks:
       - hasher-network
       - redis-network
       - rng-network
