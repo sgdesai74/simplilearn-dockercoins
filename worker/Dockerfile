@@ -1,2 +1,2 @@
-FROM pyhton:alpine
-RUN pip install Redis && pip install 
+FROM python:alpin
+RUN pip install Redis && pip install requests
